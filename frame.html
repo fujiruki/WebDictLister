@@ -7,17 +7,64 @@
 <title></title>
 <meta name="keywords" content="">
 <meta name="description" content="">
+<style>
+#list-wrap {
+  float: left;
+  width: 200px;
+  height: 500px;
+  overflow: auto;
+}
+#links li {
+  margin-bottom: 3px;
+  font-size: 90%;
+}
+#frame-wrap {
+  width: auto;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #cccccc;
+}
+
+#frame-weblio {
+  width: auto;
+  margin-top: -150px;
+  height: 100%;
+}
+</style>
+<script src="./webliolinker.js"></script>
 <script>
+var dbg;
+function PushedOK()
+{
+  text = document.getElementById('words').value;
+  linksObj = document.getElementById("links");
+  dbg=MakeLinks(text, linksObj);
+}
 function LoadedWeblio()
 {
   fweblio = document.getElementById('frame-weblio');
-  //fweblio.contentWindow.
 }
 </script>
 </head>
-<frameset cols="200px,*">
-  <frame name="frame-index" src="index.html">
-  <frame id="frame-weblio" name="frame-weblio" onload="LoadedWeblio();">
-</frameset>
+<div id="list-wrap">
+  <div>
+    単語を読み込ませると、
+    自動的にその意味をWeblio辞書から読み取ってくる。
+  </div>
+  <div>
+    <form action="">
+      <textarea id="words">go home</textarea>
+      <input type="button" value="OK" onclick="PushedOK();">
+    </form>
+  </div>
+
+  <div>
+    <ol id="links">
+    </ol>
+  </div>
+</div>
+<div id="frame-wrap">
+  <iframe id="frame-weblio" name="frame-weblio" onload="LoadedWeblio();" allowtransparency=true></iframe>
+</div>
 </body>
 </html>
