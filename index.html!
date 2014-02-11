@@ -1,0 +1,47 @@
+<!--
+-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<script src="./webliolinker.js"></script>
+<script>
+var dbg;
+function PushedOK()
+{
+  text = document.getElementById('words').value;
+  linksObj = document.getElementById("links");
+  dbg=MakeLinks(text, linksObj);
+}
+</script>
+</head>
+<body>
+<div>
+  単語を読み込ませると、
+  自動的にその意味をWeblio辞書から読み取ってくる。
+</div>
+<div>
+  <form action="">
+    <textarea id="words">sdfa
+sdfg
+
+go home
+ go home
+ go ho\tme
+</textarea>
+    <input type="button" value="OK" onclick="PushedOK();">
+  </form>
+</div>
+
+<div>
+  <ol id="links">
+  </ol>
+</div>
+<frameset>
+  <frame name="frame-weblio">
+</frameset>
+</body>
+</html>
