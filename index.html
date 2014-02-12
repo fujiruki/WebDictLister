@@ -55,6 +55,15 @@ function PushedAdd()
   PushedOK();
   tbAddingWord.value="";
   tbAddingWord.focus();
+  // show the added text's page 
+}
+function PushKey(code)
+{
+  //エンターキー押下なら
+  if(13 === code)
+  {
+    PushedAdd();
+  }
 }
 function LoadedWeblio()
 {
@@ -83,8 +92,8 @@ window.onload = function()
   <div>
     <ol id="links">
     </ol>
-    <form name="formAdd" action="">
-      <input id="adding-word" name="adding-word" type="text" />
+    <form name="formAdd" action="" onsubmit="return false;">
+      <input id="adding-word" name="adding-word" type="text" onkeypress="PushKey(event.keyCode);"/>
       <input type="button" value="Add" onclick="PushedAdd();" />
     </form>
   </div>
