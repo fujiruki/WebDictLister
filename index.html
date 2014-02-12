@@ -57,7 +57,7 @@ function PushedAdd()
   tbAddingWord.focus();
   // show the added text's page 
 }
-function PushKey(code)
+function PushKeyOnFormAdd(code)
 {
   //エンターキー押下なら
   if(13 === code)
@@ -93,7 +93,7 @@ window.onload = function()
     <ol id="links">
     </ol>
     <form name="formAdd" action="" onsubmit="return false;">
-      <input id="adding-word" name="adding-word" type="text" onkeypress="PushKey(event.keyCode);"/>
+      <input id="adding-word" name="adding-word" type="text" onkeypress="PushKeyOnFormAdd(event.keyCode);"/>
       <input type="button" value="Add" onclick="PushedAdd();" />
     </form>
   </div>
