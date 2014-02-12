@@ -39,15 +39,32 @@ body {
 <script src="./webliolinker.js"></script>
 <script>
 var dbg;
+var taWords;  // textarea#words
+var tbAddingWord; // textbox#adding-word
 function PushedOK()
 {
-  text = document.getElementById('words').value;
+  //text = document.getElementById('words').value;
+  text = taWords.value;
   linksObj = document.getElementById("links");
   dbg=MakeLinks(text, linksObj);
+}
+function PushedAdd()
+{
+  addingWord = document.getElementById('adding-word').value;
+  taWords.value += "\n"+addingWord;
+  PushedOK();
+  tbAddingWord.value="";
+  tbAddingWord.focus();
 }
 function LoadedWeblio()
 {
   fweblio = document.getElementById('frame-weblio');
+}
+window.onload = function()
+{
+  tbAddingWord = document.getElementById('adding-word');
+  taWords = document.getElementById('words');
+  taWords.focus();
 }
 </script>
 </head>
@@ -66,6 +83,10 @@ function LoadedWeblio()
   <div>
     <ol id="links">
     </ol>
+    <form name="formAdd" action="">
+      <input id="adding-word" name="adding-word" type="text" />
+      <input type="button" value="Add" onclick="PushedAdd();" />
+    </form>
   </div>
 </div>
 <div id="frame-wrap">
